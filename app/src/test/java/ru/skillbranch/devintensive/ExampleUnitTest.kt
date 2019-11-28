@@ -34,8 +34,8 @@ class ExampleUnitTest {
     fun test_message_factory() {
         val user = User.makeUser("Pinky Uni")
 
-        val m1 = BaseMessage.makeMessage(user, Chat(), Date(), "image", "image message")
-        val m2 = BaseMessage.makeMessage(user, Chat(), Date(), "t", "text message", isIncoming = true)
+        val m1 = BaseMessage.makeMessage(user, Chat("1"), Date(), "image", "image message")
+        val m2 = BaseMessage.makeMessage(user, Chat("2"), Date(), "t", "text message", isIncoming = true)
 
         println(m1.formatMessage())
         println(m2.formatMessage())
@@ -89,5 +89,7 @@ class ExampleUnitTest {
         println(date)
         println(date.humanizeDiff())
     }
+
+    
 
 }
