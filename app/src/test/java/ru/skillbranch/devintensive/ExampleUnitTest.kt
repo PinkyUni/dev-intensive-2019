@@ -6,6 +6,7 @@ import org.junit.Assert.*
 import ru.skillbranch.devintensive.extension.TimeUnits
 import ru.skillbranch.devintensive.extension.add
 import ru.skillbranch.devintensive.extension.format
+import ru.skillbranch.devintensive.extension.humanizeDiff
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
@@ -80,6 +81,13 @@ class ExampleUnitTest {
     fun test_transliteration() {
         println(Utils.transliteration("Аня Кек", " "))
         println(Utils.transliteration("Anya Кек", "+"))
-
     }
+
+    @Test
+    fun test_humanize_date() {
+        val date = Date().add(-4, TimeUnits.DAY)
+        println(date)
+        println(date.humanizeDiff())
+    }
+
 }
