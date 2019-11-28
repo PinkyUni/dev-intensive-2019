@@ -6,6 +6,7 @@ import org.junit.Assert.*
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 /**
@@ -36,4 +37,19 @@ class ExampleUnitTest {
         println(m2.formatMessage())
 
     }
+
+    @Test
+    fun test_parse_fullname() {
+        var pair = Utils.parseFullName("Anya kek")
+        println(pair)
+        pair = Utils.parseFullName("Anya ")
+        println(pair)
+        pair = Utils.parseFullName(" ")
+        println(pair)
+        pair = Utils.parseFullName("")
+        println(pair)
+        pair = Utils.parseFullName(null)
+        println(pair)
+    }
+
 }
