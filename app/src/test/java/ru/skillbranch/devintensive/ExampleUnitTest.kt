@@ -3,6 +3,7 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
+import ru.skillbranch.devintensive.extension.format
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
@@ -52,4 +53,8 @@ class ExampleUnitTest {
         println(pair)
     }
 
+    @Test
+    fun test_date_utils() {
+        println(Date().format("HH:mm"))
+    }
 }
