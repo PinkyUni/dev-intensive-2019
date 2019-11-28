@@ -90,6 +90,22 @@ class ExampleUnitTest {
         println(date.humanizeDiff())
     }
 
-    
+    @Test
+    fun test_user_builder() {
+        val s = "s"
+        val n = 3
+        val d = Date()
+        val b = true
+        val user = User.Builder().id(s)
+            .firstName(s)
+            .lastName(s)
+            .avatar(s)
+            .rating(n)
+            .respect(n)
+            .lastVisit(d)
+            .isOnline(b)
+            .build()
+        print(user)
+    }
 
 }

@@ -26,7 +26,7 @@ data class User(
         }
     }
 
-    object Builder {
+    class Builder {
         var id: String = ""
         var firstName: String? = null
         var lastName: String? = null
@@ -44,6 +44,7 @@ data class User(
         fun respect(value: Int) = apply { respect = value }
         fun lastVisit(value: Date) = apply { lastVisit = value }
         fun isOnline(value: Boolean) = apply { isOnline = value }
+        fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
 
     }
 
