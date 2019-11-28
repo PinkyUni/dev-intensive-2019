@@ -64,4 +64,16 @@ class ExampleUnitTest {
     fun test_date_add() {
         println(Date().add(-2, TimeUnits.HOUR))
     }
+
+    @Test
+    fun test_initials() {
+        println(Utils.toInitials("Anya", "Kek"))
+        println(Utils.toInitials("Anya", ""))
+        println(Utils.toInitials("Anya", " "))
+        println(Utils.toInitials(" ", ""))
+        println(Utils.toInitials(" ", "Lol"))
+        println(Utils.toInitials("Kek", null))
+        println(Utils.toInitials(null, null))
+
+    }
 }

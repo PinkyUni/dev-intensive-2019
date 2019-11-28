@@ -11,4 +11,10 @@ object Utils {
         return Pair(parts.getOrNull(0), parts.getOrNull(1))
     }
 
+    fun toInitials(firstName: String?, lastName: String?): String {
+        val f = firstName?.trim()?.getOrNull(0)
+        val l = lastName?.trim()?.getOrNull(0)
+        return if (f != null && l != null) "$f$l" else "$f"
+    }
+
 }
