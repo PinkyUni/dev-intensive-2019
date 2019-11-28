@@ -19,7 +19,7 @@ object Utils {
         return if (f != null && l != null) "$f$l" else "$f"
     }
 
-    fun transliteration(payload: String, divider: String): String {
+    fun transliteration(payload: String, divider: String = " "): String {
         val string = payload.replace(" ", divider)
         val map = mapOf(
             "а" to "a",
