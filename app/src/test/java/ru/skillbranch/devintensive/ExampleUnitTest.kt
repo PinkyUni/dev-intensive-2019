@@ -3,6 +3,8 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
+import ru.skillbranch.devintensive.extension.TimeUnits
+import ru.skillbranch.devintensive.extension.add
 import ru.skillbranch.devintensive.extension.format
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
@@ -56,5 +58,10 @@ class ExampleUnitTest {
     @Test
     fun test_date_utils() {
         println(Date().format("HH:mm"))
+    }
+
+    @Test
+    fun test_date_add() {
+        println(Date().add(-2, TimeUnits.HOUR))
     }
 }
