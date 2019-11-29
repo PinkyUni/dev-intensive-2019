@@ -42,7 +42,7 @@ class ExampleUnitTest {
                 date,
                 "any text message",
                 "text"
-            )
+            ).formatMessage()
         ) //Василий отправил сообщение "any text message" только что
         println(
             BaseMessage.makeMessage(
@@ -52,7 +52,7 @@ class ExampleUnitTest {
                 "https://anyurl.com",
                 "image",
                 true
-            )
+            ).formatMessage()
         ) //Василий получил изображение "https://anyurl.com" 2 часа назад
 
     }
@@ -91,7 +91,7 @@ class ExampleUnitTest {
         println(Utils.toInitials("Kek", null))
         println(Utils.toInitials(null, null))
 
-        println(Utils.toInitials("john" ,"doe")) //JD
+        println(Utils.toInitials("john", "doe")) //JD
         println(Utils.toInitials("John", null)) //J
         println(Utils.toInitials(null, null)) //null
         println(Utils.toInitials(" ", "")) //null
