@@ -40,8 +40,8 @@ class ExampleUnitTest {
                 user,
                 chat,
                 date,
-                "any text message",
-                "text"
+                "text",
+                "any text message"
             ).formatMessage()
         ) //Василий отправил сообщение "any text message" только что
         println(
@@ -49,8 +49,8 @@ class ExampleUnitTest {
                 user,
                 chat,
                 date.add(-2, TimeUnits.HOUR),
-                "https://anyurl.com",
                 "image",
+                "https://anyurl.com",
                 true
             ).formatMessage()
         ) //Василий получил изображение "https://anyurl.com" 2 часа назад
