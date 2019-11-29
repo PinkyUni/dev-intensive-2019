@@ -16,10 +16,10 @@ abstract class BaseMessage(
 
         var message_id: Int = 0
 
-        fun makeMessage(from: User?, chat: Chat, date: Date, type: String, payload: String, isIncoming:Boolean = false): BaseMessage {
+        fun makeMessage(from: User?, chat: Chat, date: Date, payload: String, type: String, isIncoming:Boolean = false): String {
             return when (type) {
-                "image" -> ImageMessage(message_id.toString(), from, chat, isIncoming, date, payload)
-                else -> TextMessage(message_id.toString(), from, chat, isIncoming, date, payload)
+                "image" -> ImageMessage(message_id.toString(), from, chat, isIncoming, date, payload).formatMessage()
+                else -> TextMessage(message_id.toString(), from, chat, isIncoming, date, payload).formatMessage()
             }
         }
 

@@ -32,13 +32,28 @@ class ExampleUnitTest {
 
     @Test
     fun test_message_factory() {
-        val user = User.makeUser("Pinky Uni")
-
-        val m1 = BaseMessage.makeMessage(user, Chat("1"), Date(), "image", "image message")
-        val m2 = BaseMessage.makeMessage(user, Chat("2"), Date(), "t", "text message", isIncoming = true)
-
-        println(m1.formatMessage())
-        println(m2.formatMessage())
+        val user = User.makeUser("Василий Кузнецов")
+        val chat = Chat("1")
+        val date = Date()
+        println(
+            BaseMessage.makeMessage(
+                user,
+                chat,
+                date,
+                "any text message",
+                "text"
+            )
+        ) //Василий отправил сообщение "any text message" только что
+        println(
+            BaseMessage.makeMessage(
+                user,
+                chat,
+                date.add(-2, TimeUnits.HOUR),
+                "https://anyurl.com",
+                "image",
+                true
+            )
+        ) //Василий получил изображение "https://anyurl.com" 2 часа назад
 
     }
 
