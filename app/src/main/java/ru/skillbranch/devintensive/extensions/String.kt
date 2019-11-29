@@ -7,3 +7,7 @@ fun String.truncate(value: Int = 16): String {
     else
         string
 }
+
+fun String.stripHtml(): String {
+    return this.substringAfter(">").substringBefore("<").replace(Regex("[\\s]+"), " ")
+}
