@@ -105,9 +105,9 @@ class ExampleUnitTest {
 
     @Test
     fun test_humanize_date() {
-        println(Date().add(-2, TimeUnits.HOUR).humanizeDiff()) //2 часа назад
+        println(Date().add(-2, TimeUnits.SECOND).humanizeDiff()) //2 часа назад
         println(Date().add(-5, TimeUnits.DAY).humanizeDiff()) //5 дней назад
-        println(Date().add(2, TimeUnits.MINUTE).humanizeDiff()) //через 2 минуты
+        println(Date().add(2, TimeUnits.SECOND).humanizeDiff()) //через 2 минуты
         println(Date().add(7, TimeUnits.DAY).humanizeDiff()) //через 7 дней
         println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //более года назад
         println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //более чем через год
