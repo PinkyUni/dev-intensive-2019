@@ -41,5 +41,9 @@ fun Date.humanizeDiff(): String {
 }
 
 enum class TimeUnits(val value: Long) {
-    SECOND(1), MINUTE(60), HOUR(60 * 60), DAY(24 * 60 * 60)
+    SECOND(1), MINUTE(60), HOUR(60 * 60), DAY(24 * 60 * 60);
+
+    fun plural(value: Int): String {
+        return value.toString()
+    }
 }

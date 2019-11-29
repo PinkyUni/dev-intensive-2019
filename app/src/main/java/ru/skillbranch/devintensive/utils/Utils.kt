@@ -16,7 +16,7 @@ object Utils {
     fun toInitials(firstName: String?, lastName: String?): String {
         val f = firstName?.trim()?.getOrNull(0)
         val l = lastName?.trim()?.getOrNull(0)
-        return if (f != null && l != null) "${f.toUpperCase()}${l.toUpperCase()}" else "${f?.toUpperCase()}"
+        return if (f != null && l != null) "${f.toUpperCase()}${l.toUpperCase()}" else if(f != null) "${f.toUpperCase()}" else "${l?.toUpperCase()}"
     }
 
     fun transliteration(payload: String, divider: String = " "): String {

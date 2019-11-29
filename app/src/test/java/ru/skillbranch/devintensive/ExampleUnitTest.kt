@@ -83,13 +83,13 @@ class ExampleUnitTest {
 
     @Test
     fun test_initials() {
-//        println(Utils.toInitials("Anya", "Kek"))
-//        println(Utils.toInitials("Anya", ""))
-//        println(Utils.toInitials("Anya", " "))
-//        println(Utils.toInitials(" ", ""))
-//        println(Utils.toInitials(" ", "Lol"))
-//        println(Utils.toInitials("Kek", null))
-//        println(Utils.toInitials(null, null))
+        println(Utils.toInitials("Anya", "Kek"))
+        println(Utils.toInitials("Anya", ""))
+        println(Utils.toInitials("Anya", " "))
+        println(Utils.toInitials(" ", ""))
+        println(Utils.toInitials(" ", "Lol"))
+        println(Utils.toInitials("Kek", null))
+        println(Utils.toInitials(null, null))
 
         println(Utils.toInitials("john" ,"doe")) //JD
         println(Utils.toInitials("John", null)) //J
@@ -129,6 +129,14 @@ class ExampleUnitTest {
             .isOnline(b)
             .build()
         print(user)
+    }
+
+    @Test
+    fun test_plural() {
+        println(TimeUnits.SECOND.plural(1)) //1 секунду
+        println(TimeUnits.MINUTE.plural(4)) //4 минуты
+        println(TimeUnits.HOUR.plural(19)) //19 часов
+        println(TimeUnits.DAY.plural(222)) //222 дня
     }
 
 }
