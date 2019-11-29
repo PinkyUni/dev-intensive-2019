@@ -3,10 +3,7 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
-import ru.skillbranch.devintensive.extensions.TimeUnits
-import ru.skillbranch.devintensive.extensions.add
-import ru.skillbranch.devintensive.extensions.format
-import ru.skillbranch.devintensive.extensions.humanizeDiff
+import ru.skillbranch.devintensive.extensions.*
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
@@ -137,6 +134,14 @@ class ExampleUnitTest {
         println(TimeUnits.MINUTE.plural(4)) //4 минуты
         println(TimeUnits.HOUR.plural(19)) //19 часов
         println(TimeUnits.DAY.plural(222)) //222 дня
+    }
+
+    @Test
+    fun test_truncate() {
+        println("12345".truncate(2))
+        println("Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»".truncate()) //Bender Bending R...
+        println("Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»".truncate(15)) //Bender Bending...
+        println("A     ".truncate(3)) //A
     }
 
 }
