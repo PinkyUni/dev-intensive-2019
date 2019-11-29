@@ -10,7 +10,6 @@ fun String.truncate(value: Int = 16): String {
 
 fun String.stripHtml(): String {
     return this.replace(Regex("(<(/?[^>]+)>)"), "")
-//        .replace(Regex("&[A-Za-z0-9]+"), "")
         .replace(Regex("[&<>'\"]"), "")
         .replace(Regex("[\\s]+"), " ")
 }
