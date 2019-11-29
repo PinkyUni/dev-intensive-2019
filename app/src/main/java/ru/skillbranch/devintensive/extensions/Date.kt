@@ -10,7 +10,7 @@ fun Date.format(pattern: String = "HH:mm:ss dd.MM.yy"): String {
 }
 
 fun Date.add(value: Int, units: TimeUnits): Date {
-    return Date(this.time + value * units.value * TimeUnits.SECOND.value)
+    return Date(this.time + value * units.value)
 }
 
 fun Date.humanizeDiff(): String {
@@ -48,7 +48,27 @@ enum class TimeUnits(val value: Long) {
     SECOND(1000L), MINUTE(60 * SECOND.value), HOUR(60 * MINUTE.value), DAY(24 * HOUR.value);
 
     fun plural(value: Int): String {
-        println(this.name)
-        return value.toString()
+        return "$value ${when (this) {
+            SECOND -> when (value % 10) {
+                1 -> "секунду"
+                in 2..4 -> "секунды"
+                else -> "секунд"
+            }
+            MINUTE -> when (value % 10) {
+                1 -> "минуту"
+                in 2..4 -> "минуты"
+                else -> "минут"
+            }
+            HOUR -> when (value % 10) {
+                1 -> "час"
+                in 2..4 -> "часа"
+                else -> "часов"
+            }
+            DAY -> when (value % 10) {
+                1 -> "день"
+                in 2..4 -> "дня"
+                else -> "дней"
+            }
+        }}"
     }
 }
