@@ -146,8 +146,8 @@ class ExampleUnitTest {
 
     @Test
     fun test_html() {
-        println("<p class=\"title\">Образовательное IT-сообщество Skill Branch</p>".stripHtml()) //Образовательное IT-сообщество Skill Branch
-        println("<p>Образовательное       IT-сообщество Skill Branch</p>".stripHtml()) //Образовательное IT-сообщество Skill Branch
+        println("<p class=\"title\" &#86>Образовательное &Aacute IT-сообщество Skill Branch</p>".stripHtml()) //Образовательное IT-сообщество Skill Branch
+        println("<p>Образовательное   &hf    IT-сообщество Skill Branch</p>".stripHtml()) //Образовательное IT-сообщество Skill Branch
     }
 
 }
