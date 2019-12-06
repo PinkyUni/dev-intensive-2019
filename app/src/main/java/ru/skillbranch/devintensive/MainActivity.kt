@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -12,6 +14,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.skillbranch.devintensive.extensions.hideKeyboard
+import ru.skillbranch.devintensive.extensions.isKeyboardClosed
+import ru.skillbranch.devintensive.extensions.isKeyboardOpen
 import ru.skillbranch.devintensive.models.Bender
 import java.util.*
 
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             processAnswer()
         }
 
-        messageEt.setOnEditorActionListener { v, actionId, event ->
+        messageEt.setOnEditorActionListener { _, actionId, _ ->
             var handled = false
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 processAnswer()
@@ -65,7 +69,8 @@ class MainActivity : AppCompatActivity() {
             PorterDuff.Mode.MULTIPLY
         )
         messageEt.text.clear()
-        this.hideKeyboard()
+        if (this.isKeyboardOpen())
+            this.hideKeyboard()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -73,4 +78,5 @@ class MainActivity : AppCompatActivity() {
         outState.putString("STATUS", benderObj.status.name)
         outState.putString("QUESTION", benderObj.question.name)
     }
+
 }

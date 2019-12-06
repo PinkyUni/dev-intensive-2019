@@ -2,7 +2,10 @@ package ru.skillbranch.devintensive.extensions
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Rect
 import android.view.inputmethod.InputMethodManager
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 fun Activity.hideKeyboard() {
     val inputManager: InputMethodManager =
@@ -11,4 +14,22 @@ fun Activity.hideKeyboard() {
         this.currentFocus?.windowToken,
         InputMethodManager.HIDE_NOT_ALWAYS
     )
+}
+
+fun Activity.isKeyboardOpen(): Boolean {
+    val r = Rect()
+    val rootView = this.window.decorView
+    rootView.getWindowVisibleDisplayFrame(r)
+    val screenHeight: Int = rootView.height
+    val heightDifference = screenHeight - (r.bottom - r.top)
+    return heightDifference > 200
+}
+
+fun Activity.isKeyboardClosed(): Boolean {
+    val r = Rect()
+    val rootView = this.window.decorView
+    rootView.getWindowVisibleDisplayFrame(r)
+    val screenHeight: Int = rootView.height
+    val heightDifference = screenHeight - (r.bottom - r.top)
+    return heightDifference == 0
 }
