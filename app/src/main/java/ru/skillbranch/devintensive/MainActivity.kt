@@ -1,16 +1,18 @@
 package ru.skillbranch.devintensive
 
+import android.content.Context
 import android.graphics.Color
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.skillbranch.devintensive.models.Bender
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var benderImage: ImageView
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         benderObj.question = Bender.Question.valueOf(question)
 
         val (r, g, b) = benderObj.status.color
-        benderImage.setColorFilter(Color.rgb(r, g, b))
+        benderImage.setColorFilter(Color.rgb(r, g, b), PorterDuff.Mode.MULTIPLY)
 
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener {
@@ -47,7 +49,17 @@ class MainActivity : AppCompatActivity() {
                 PorterDuff.Mode.MULTIPLY
             )
             messageEt.text.clear()
+            hideKeyboard(this)
         }
+    }
+
+    private fun hideKeyboard(context: Context) {
+        val inputManager: InputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(
+            this.currentFocus?.windowToken,
+            InputMethodManager.HIDE_NOT_ALWAYS
+        )
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
