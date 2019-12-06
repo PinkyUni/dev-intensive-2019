@@ -1,24 +1,17 @@
 package ru.skillbranch.devintensive
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.skillbranch.devintensive.extensions.hideKeyboard
-import ru.skillbranch.devintensive.extensions.isKeyboardClosed
 import ru.skillbranch.devintensive.extensions.isKeyboardOpen
 import ru.skillbranch.devintensive.models.Bender
-import java.util.*
-
 
 class MainActivity : AppCompatActivity() {
     lateinit var benderImage: ImageView
@@ -48,13 +41,15 @@ class MainActivity : AppCompatActivity() {
 
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener {
-            processAnswer()
+            if (messageEt.length() > 0)
+                processAnswer()
         }
 
         messageEt.setOnEditorActionListener { _, actionId, _ ->
             var handled = false
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                processAnswer()
+                if (messageEt.length() > 0)
+                    processAnswer()
                 handled = true
             }
             handled

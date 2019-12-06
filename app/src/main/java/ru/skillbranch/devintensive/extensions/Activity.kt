@@ -4,8 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
 import android.view.inputmethod.InputMethodManager
-import kotlinx.android.synthetic.main.activity_main.*
-
 
 fun Activity.hideKeyboard() {
     val inputManager: InputMethodManager =
