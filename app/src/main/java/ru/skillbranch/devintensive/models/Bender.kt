@@ -1,5 +1,7 @@
 package ru.skillbranch.devintensive.models
 
+import java.util.*
+
 class Bender(var status: Status = Status.NORMAL, var question: Question = Question.NAME) {
 
     fun askQuestion() = when (question) {
@@ -12,7 +14,38 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
     }
 
     fun listenAnswer(answer: String): Pair<String, Triple<Int, Int, Int>> =
-        if (question.answers.contains(answer)) {
+        when (question) {
+            Question.NAME ->
+                if (!answer[0].isUpperCase())
+                    "Имя должно начинаться с заглавной буквы\n" + question.question to status.color
+                else
+                    process(answer)
+            Question.PROFESSION ->
+                if (!answer[0].isLowerCase())
+                    "Профессия должна начинаться со строчной буквы\n" + question.question to status.color
+                else
+                    process(answer)
+            Question.MATERIAL ->
+                if (answer.contains(Regex("[0-9]+")))
+                    "Материал не должен содержать цифр\n" + question.question to status.color
+                else
+                    process(answer)
+            Question.BDAY ->
+                if (answer.contains(Regex("[^0-9]")))
+                    "Год моего рождения должен содержать только цифры\n" + question.question to status.color
+                else
+                    process(answer)
+            Question.SERIAL ->
+                if (answer.contains(Regex("[0-9]{7}")))
+                    process(answer)
+                else
+                    "Серийный номер содержит только цифры, и их 7\n" + question.question to status.color
+            Question.IDLE ->
+                process(answer)
+        }
+
+    private fun process(answer: String): Pair<String, Triple<Int, Int, Int>> =
+        if (question.answers.contains(answer.toLowerCase(Locale.ROOT))) {
             if (question == Question.IDLE)
                 "Отлично - ты справился\nНа этом все, вопросов больше нет" to status.color
             else {
@@ -29,7 +62,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
                 "Это неправильный ответ\n${question.question}" to status.color
             }
         }
-
 
     enum class Status(val color: Triple<Int, Int, Int>) {
         NORMAL(Triple(255, 255, 255)),

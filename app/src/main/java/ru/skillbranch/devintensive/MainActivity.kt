@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun processAnswer() {
-        val (text, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase(Locale.ROOT))
+        val (text, color) = benderObj.listenAnswer(messageEt.text.toString())
         textTxt.text = text
         benderImage.setColorFilter(
             Color.rgb(color.first, color.second, color.third),
