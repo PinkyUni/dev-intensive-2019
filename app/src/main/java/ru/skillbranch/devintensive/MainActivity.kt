@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
         val question = savedInstanceState?.getString("QUESTION") ?: Bender.Question.NAME.name
         benderObj.question = Bender.Question.valueOf(question)
 
+        val (r, g, b) = benderObj.status.color
+        benderImage.setColorFilter(Color.rgb(r, g, b))
+
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener {
             val (text, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase(Locale.ROOT))
