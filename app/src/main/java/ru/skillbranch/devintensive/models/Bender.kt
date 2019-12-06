@@ -36,7 +36,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
                 else
                     process(answer)
             Question.SERIAL ->
-                if (answer.contains(Regex("[0-9]{7}")))
+                if (answer.length == 7 && answer.contains(Regex("\\d{7}")))
                     process(answer)
                 else
                     "Серийный номер содержит только цифры, и их 7\n" + question.question to status.color
