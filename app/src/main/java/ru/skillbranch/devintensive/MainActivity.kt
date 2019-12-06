@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
@@ -43,15 +44,28 @@ class MainActivity : AppCompatActivity() {
 
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener {
-            val (text, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase(Locale.ROOT))
-            textTxt.text = text
-            benderImage.setColorFilter(
-                Color.rgb(color.first, color.second, color.third),
-                PorterDuff.Mode.MULTIPLY
-            )
-            messageEt.text.clear()
-            this.hideKeyboard()
+            processAnswer()
         }
+
+        messageEt.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                processAnswer()
+                handled = true
+            }
+            handled
+        }
+    }
+
+    private fun processAnswer() {
+        val (text, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase(Locale.ROOT))
+        textTxt.text = text
+        benderImage.setColorFilter(
+            Color.rgb(color.first, color.second, color.third),
+            PorterDuff.Mode.MULTIPLY
+        )
+        messageEt.text.clear()
+        this.hideKeyboard()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
