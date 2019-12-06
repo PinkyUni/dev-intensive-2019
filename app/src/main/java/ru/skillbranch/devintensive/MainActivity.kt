@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.skillbranch.devintensive.extensions.hideKeyboard
 import ru.skillbranch.devintensive.models.Bender
 import java.util.*
 
@@ -49,17 +50,8 @@ class MainActivity : AppCompatActivity() {
                 PorterDuff.Mode.MULTIPLY
             )
             messageEt.text.clear()
-            hideKeyboard(this)
+            this.hideKeyboard()
         }
-    }
-
-    private fun hideKeyboard(context: Context) {
-        val inputManager: InputMethodManager =
-            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.hideSoftInputFromWindow(
-            this.currentFocus?.windowToken,
-            InputMethodManager.HIDE_NOT_ALWAYS
-        )
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
