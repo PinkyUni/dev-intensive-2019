@@ -14,20 +14,20 @@ fun Activity.hideKeyboard() {
     )
 }
 
-//fun Activity.isKeyboardOpen(): Boolean {
-//    val r = Rect()
-//    val rootView = this.window.decorView
-//    rootView.getWindowVisibleDisplayFrame(r)
-//    val screenHeight: Int = rootView.height
-//    val heightDifference = screenHeight - (r.bottom - r.top)
-//    return heightDifference > 200
-//}
-//
-//fun Activity.isKeyboardClosed(): Boolean {
-//    val r = Rect()
-//    val rootView = this.window.decorView
-//    rootView.getWindowVisibleDisplayFrame(r)
-//    val screenHeight: Int = rootView.height
-//    val heightDifference = screenHeight - (r.bottom - r.top)
-//    return heightDifference == 0
-//}
+fun Activity.isKeyboardOpen(): Boolean {
+    val r = Rect()
+    val rootView = this.window.decorView
+    rootView.getWindowVisibleDisplayFrame(r)
+    val screenHeight: Int = rootView.height
+    val heightDifference = screenHeight - (r.bottom - r.top)
+    return heightDifference > 200
+}
+
+fun Activity.isKeyboardClosed(): Boolean {
+    val r = Rect()
+    val rootView = this.window.decorView
+    rootView.getWindowVisibleDisplayFrame(r)
+    val screenHeight: Int = rootView.height
+    val heightDifference = screenHeight - (r.bottom - r.top)
+    return heightDifference == 0
+}
