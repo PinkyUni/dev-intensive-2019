@@ -41,19 +41,19 @@ class MainActivity : AppCompatActivity() {
 
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener {
-            if (messageEt.length() > 0)
+            //if (messageEt.length() > 0)
                 processAnswer()
         }
 
-        messageEt.setOnEditorActionListener { _, actionId, _ ->
-            var handled = false
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (messageEt.length() > 0)
-                    processAnswer()
-                handled = true
-            }
-            handled
-        }
+//        messageEt.setOnEditorActionListener { _, actionId, _ ->
+//            var handled = false
+//            if (actionId == EditorInfo.IME_ACTION_DONE) {
+//               // if (messageEt.length() > 0)
+//                    processAnswer()
+//                handled = true
+//            }
+//            handled
+//        }
     }
 
     private fun processAnswer() {
