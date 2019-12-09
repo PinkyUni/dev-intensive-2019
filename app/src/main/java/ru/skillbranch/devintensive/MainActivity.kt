@@ -44,15 +44,6 @@ class MainActivity : AppCompatActivity() {
         sendBtn.setOnClickListener {
             processAnswer()
         }
-
-        messageEt.setOnEditorActionListener { _, actionId, _ ->
-            var handled = false
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                processAnswer()
-                handled = true
-            }
-            handled
-        }
     }
 
     private fun processAnswer() {
