@@ -20,7 +20,7 @@ fun Activity.isKeyboardOpen(): Boolean {
     rootView.getWindowVisibleDisplayFrame(r)
     val screenHeight: Int = rootView.height
     val heightDifference = screenHeight - (r.bottom - r.top)
-    return heightDifference > 200
+    return heightDifference > 100
 }
 
 fun Activity.isKeyboardClosed(): Boolean {

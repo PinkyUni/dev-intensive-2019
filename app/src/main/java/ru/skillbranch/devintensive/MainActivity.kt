@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.skillbranch.devintensive.extensions.hideKeyboard
+import ru.skillbranch.devintensive.extensions.isKeyboardClosed
 import ru.skillbranch.devintensive.extensions.isKeyboardOpen
 import ru.skillbranch.devintensive.models.Bender
 
@@ -41,19 +42,17 @@ class MainActivity : AppCompatActivity() {
 
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener {
-            //if (messageEt.length() > 0)
-                processAnswer()
+            processAnswer()
         }
 
-//        messageEt.setOnEditorActionListener { _, actionId, _ ->
-//            var handled = false
-//            if (actionId == EditorInfo.IME_ACTION_DONE) {
-//               // if (messageEt.length() > 0)
-//                    processAnswer()
-//                handled = true
-//            }
-//            handled
-//        }
+        messageEt.setOnEditorActionListener { _, actionId, _ ->
+            var handled = false
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                processAnswer()
+                handled = true
+            }
+            handled
+        }
     }
 
     private fun processAnswer() {
@@ -63,9 +62,9 @@ class MainActivity : AppCompatActivity() {
             Color.rgb(color.first, color.second, color.third),
             PorterDuff.Mode.MULTIPLY
         )
-        messageEt.text.clear()
         if (this.isKeyboardOpen())
             this.hideKeyboard()
+        messageEt.text.clear()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
