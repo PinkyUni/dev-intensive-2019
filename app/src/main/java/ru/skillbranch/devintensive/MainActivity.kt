@@ -54,8 +54,7 @@ class MainActivity : AppCompatActivity() {
             PorterDuff.Mode.MULTIPLY
         )
         messageEt.text.clear()
-        if (this.isKeyboardOpen())
-            this.hideKeyboard()
+        this.hideKeyboard()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
