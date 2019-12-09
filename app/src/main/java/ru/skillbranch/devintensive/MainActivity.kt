@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
             Color.rgb(color.first, color.second, color.third),
             PorterDuff.Mode.MULTIPLY
         )
+        messageEt.text.clear()
         if (this.isKeyboardOpen())
             this.hideKeyboard()
-        messageEt.text.clear()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
